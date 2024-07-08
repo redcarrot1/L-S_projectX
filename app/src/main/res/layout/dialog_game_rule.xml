@@ -75,14 +75,13 @@
         android:id="@+id/tv_clear_condition_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="56dp"
+        android:layout_marginTop="124dp"
         android:fontFamily="@font/neo_dunggeunmo_regular"
         android:text="클리어 조건"
         android:textSize="23dp"
         app:layout_constraintEnd_toEndOf="@+id/dialog_game_over_bg"
-        app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="@+id/dialog_game_over_bg"
-        app:layout_constraintTop_toBottomOf="@+id/tv_game_rule"
+        app:layout_constraintTop_toBottomOf="@+id/tv_title"
         app:layout_constraintVertical_chainStyle="packed" />
 
     <TextView

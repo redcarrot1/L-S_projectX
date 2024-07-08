@@ -18,12 +18,12 @@
 
 
     <TextView
-        android:id="@+id/tv_confirm_name"
+        android:id="@+id/tv_choose_character"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="52dp"
         android:fontFamily="@font/neo_dunggeunmo_regular"
-        android:text="당신의 이름이\n싱싱이 맞나요?"
+        android:text="캐릭터를 선택해주세요."
         android:textSize="23dp"
         app:layout_constraintEnd_toEndOf="@+id/mv_name_bg"
         app:layout_constraintHorizontal_bias="0.494"
@@ -32,30 +32,24 @@
         app:layout_constraintVertical_chainStyle="packed" />
 
     <Button
-        android:id="@+id/btn_no"
-        android:layout_width="241dp"
-        android:layout_height="39dp"
-        android:layout_marginTop="32dp"
-        android:background="@drawable/name_btn2"
-        android:fontFamily="@font/neo_dunggeunmo_regular"
-        android:text="아니오. 다시 입력할래요."
-        android:textSize="19dp"
-        app:layout_constraintEnd_toEndOf="@id/mv_name_bg"
-        app:layout_constraintHorizontal_bias="0.494"
+        android:id="@+id/btn_man"
+        android:layout_width="125dp"
+        android:layout_height="125dp"
+        android:layout_marginTop="36dp"
+        android:background="@drawable/conversation_man"
+        app:layout_constraintEnd_toStartOf="@+id/btn_woman"
+        app:layout_constraintHorizontal_bias="0.729"
         app:layout_constraintStart_toStartOf="@id/mv_name_bg"
-        app:layout_constraintTop_toBottomOf="@+id/tv_confirm_name" />
+        app:layout_constraintTop_toBottomOf="@+id/tv_choose_character" />
 
     <Button
-        android:id="@+id/btn_yes"
-        android:layout_width="241dp"
-        android:layout_height="39dp"
-        android:layout_marginTop="12dp"
-        android:background="@drawable/name_btn1"
-        android:fontFamily="@font/neo_dunggeunmo_regular"
-        android:text="네 맞습니다!"
-        android:textSize="19dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btn_no" />
+        android:id="@+id/btn_woman"
+        android:layout_width="125dp"
+        android:layout_height="125dp"
+        android:background="@drawable/conversation_woman"
+        app:layout_constraintEnd_toEndOf="@+id/mv_name_bg"
+        app:layout_constraintHorizontal_bias="0.822"
+        app:layout_constraintStart_toStartOf="@+id/mv_name_bg"
+        app:layout_constraintTop_toTopOf="@+id/btn_man" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,14 +1,10 @@
 package com.umc.playkuround.activity
 
-import android.app.Activity
-import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import com.projectx.breakout.BreakOutView
 import com.umc.playkuround.R
 import com.umc.playkuround.dialog.GameOverDialog
 import com.umc.playkuround.dialog.WaitingDialog
-import com.umc.playkuround.util.SoundPlayer
 
 class MiniGameBreakOutActivity : AppCompatActivity() {
 
@@ -26,21 +22,20 @@ class MiniGameBreakOutActivity : AppCompatActivity() {
     }
 
     private fun showGameOverDialog(isSuccess: Boolean) {
-       // SoundPlayer(applicationContext, R.raw.avoid_game_over).play()
+        // SoundPlayer(applicationContext, R.raw.avoid_game_over).play()
 
-        fun showGameOverDialog(result: Int) {
+        fun showGameOverDialog() {
             val gameOverDialog = GameOverDialog(this@MiniGameBreakOutActivity)
             gameOverDialog.setOnDismissListener {
-//                val resultIntent = Intent()
-//                resultIntent.putExtra(
-//                    "isNewLandmark",
-//                    intent.getBooleanExtra("isNewLandmark", false)
-//                )
-//                setResult(result, resultIntent)
                 this.finish()
             }
-            gameOverDialog.setInfo("CLEAR!", true)
-            //gameOverDialog.setInfo("FAIL!", false)
+
+//            if (isSuccess) {
+//                gameOverDialog.setInfo("CLEAR!", true)
+//            } else {
+//                gameOverDialog.setInfo("FAIL!", false)
+//            }
+            gameOverDialog.setInfo("CLEAR!", true) // TODO
             gameOverDialog.show()
         }
 
@@ -48,7 +43,7 @@ class MiniGameBreakOutActivity : AppCompatActivity() {
         waitingDialog.setOnFinishListener(object : WaitingDialog.OnFinishListener {
             override fun onFinish() {
                 waitingDialog.dismiss()
-                showGameOverDialog(Activity.RESULT_OK)
+                showGameOverDialog()
             }
         })
         waitingDialog.show()

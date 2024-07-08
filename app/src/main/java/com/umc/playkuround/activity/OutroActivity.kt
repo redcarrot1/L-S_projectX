@@ -14,9 +14,9 @@ class OutroActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         binding.root.setOnClickListener {
-            android.os.Process.killProcess(android.os.Process.myPid())
+            finishAffinity()
+            System.exit(0)
         }
-
     }
 
 }

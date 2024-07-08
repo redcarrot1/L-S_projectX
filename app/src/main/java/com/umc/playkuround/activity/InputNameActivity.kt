@@ -16,7 +16,7 @@ class InputNameActivity : AppCompatActivity() {
         binding = ActivityInputNameBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        binding.button.setOnClickListener {
+        binding.btNameComplete.setOnClickListener {
             Name.name = binding.etName.text.toString()
             val intent = Intent(this, ConfirmNameActivity::class.java)
             startActivity(intent)

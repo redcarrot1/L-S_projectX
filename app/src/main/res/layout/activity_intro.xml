@@ -12,6 +12,7 @@
         android:layout_marginTop="264dp"
         android:text="."
         android:textColor="#FFFFFF"
+        android:textSize="17dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
@@ -24,8 +25,8 @@
         android:layout_marginTop="20dp"
         android:text="."
         android:textColor="#FFFFFF"
+        android:textSize="17dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv1" />
 
@@ -36,8 +37,8 @@
         android:layout_marginTop="20dp"
         android:text="."
         android:textColor="#FFFFFF"
+        android:textSize="17dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv2" />
 
@@ -48,8 +49,8 @@
         android:layout_marginTop="20dp"
         android:text="."
         android:textColor="#FFFFFF"
+        android:textSize="17dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv3" />
 
@@ -60,8 +61,8 @@
         android:layout_marginTop="20dp"
         android:text="."
         android:textColor="#FFFFFF"
+        android:textSize="17dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv4" />
 
@@ -72,8 +73,8 @@
         android:layout_marginTop="20dp"
         android:text="."
         android:textColor="#FFFFFF"
+        android:textSize="17dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv5" />
 

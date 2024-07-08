@@ -1,22 +1,18 @@
 package com.umc.playkuround.activity
 
-import android.app.Activity
-import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.Button
+import androidx.appcompat.app.AppCompatActivity
 import com.umc.playkuround.R
 import com.umc.playkuround.dialog.GameOverDialog
 import com.umc.playkuround.dialog.WaitingDialog
-import com.umc.playkuround.util.SoundPlayer
 import kotlin.random.Random
 
 class MiniGameTicTacToeActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        //enableEdgeToEdge()
         setContentView(R.layout.activity_minigame_tic_tac_toe)
     }
 
@@ -58,13 +54,9 @@ class MiniGameTicTacToeActivity : AppCompatActivity() {
         val winner = checkWinner()
         if (winner != -1) {
             if (winner == 1) {
-                println("Player 1 win the game")
                 showGameOverDialog(true)
-                //Toast.makeText(this, " Player 1  win the game", Toast.LENGTH_LONG).show()
             } else {
-                println("Player 2 win the game")
                 showGameOverDialog(false)
-                //Toast.makeText(this, " Player 2  win the game", Toast.LENGTH_LONG).show()
             }
         } else {
             if (activePlayer == 2) {
@@ -173,18 +165,18 @@ class MiniGameTicTacToeActivity : AppCompatActivity() {
     }
 
     private fun showGameOverDialog(isSuccess: Boolean) {
-        fun showGameOverDialog(result: Int) {
+        fun showGameOverDialog() {
             val gameOverDialog = GameOverDialog(this@MiniGameTicTacToeActivity)
             gameOverDialog.setOnDismissListener {
-//                val resultIntent = Intent()
-//                resultIntent.putExtra("isNewLandmark", intent.getBooleanExtra("isNewLandmark", false))
-//                setResult(result, resultIntent)
                 this.finish()
             }
 
-            //gameOverDialog.setInfo("FAIL!", false)
+//            if (isSuccess) {
+//                gameOverDialog.setInfo("CLEAR!", true)
+//            } else {
+//                gameOverDialog.setInfo("FAIL!", false)
+//            }
             gameOverDialog.setInfo("CLEAR!", true) // TODO
-            println("Game Over Dialog")
             gameOverDialog.show()
         }
 
@@ -192,7 +184,7 @@ class MiniGameTicTacToeActivity : AppCompatActivity() {
         waitingDialog.setOnFinishListener(object : WaitingDialog.OnFinishListener {
             override fun onFinish() {
                 waitingDialog.dismiss()
-                showGameOverDialog(Activity.RESULT_OK)
+                showGameOverDialog()
             }
         })
         waitingDialog.show()

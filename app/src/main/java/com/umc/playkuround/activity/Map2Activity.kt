@@ -2,7 +2,6 @@ package com.umc.playkuround.activity
 
 import android.annotation.SuppressLint
 import android.os.Bundle
-import android.view.View
 import android.view.WindowManager
 import android.widget.ImageView
 import androidx.appcompat.app.AppCompatActivity
@@ -38,9 +37,7 @@ class Map2Activity : AppCompatActivity() {
     fun updateBackgroundImage() {
         val mv = findViewById<ImageView>(R.id.view_bg)
         when (Chapter.value) {
-            1 -> Glide.with(this)
-                .load(R.drawable.map1)
-                .into(mv)
+            1 -> Glide.with(this).load(R.drawable.map1).into(mv)
             2 -> Glide.with(this).load(R.drawable.map2).into(mv)
             3 -> Glide.with(this).load(R.drawable.map3).into(mv)
             4 -> Glide.with(this).load(R.drawable.map4).into(mv)

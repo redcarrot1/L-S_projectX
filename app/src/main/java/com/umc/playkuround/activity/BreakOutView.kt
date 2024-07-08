@@ -1,4 +1,4 @@
-package com.projectx.breakout
+package com.umc.playkuround.activity
 
 import android.content.Context
 import android.graphics.Canvas
@@ -34,7 +34,7 @@ class BreakOutView(context: Context, attrs: AttributeSet) : View(context, attrs)
     fun start() {
         isPause = false
         timer = Timer()
-        timer?.scheduleAtFixedRate(object : TimerTask() {
+        timer?.schedule(object : TimerTask() {
             override fun run() {
                 handler.post {
                     ball.update()

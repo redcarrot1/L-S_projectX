@@ -10,13 +10,12 @@ import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.view.View
 import android.view.ViewGroup
-import com.umc.playkuround.activity.MiniGameWindowActivity
+import com.umc.playkuround.R
 import com.umc.playkuround.activity.OutroActivity
 import com.umc.playkuround.data.Chapter
 import com.umc.playkuround.data.Conversation
 import com.umc.playkuround.data.ConversationManager
 import com.umc.playkuround.data.Name
-import com.umc.playkuround.databinding.ActivityOutroBinding
 import com.umc.playkuround.databinding.DialogConversationBinding
 
 
@@ -42,6 +41,9 @@ class ConversationDialog(context: Context, chapter: Int) : Dialog(context) {
 
         halfColor.setScale(0.5f, 0.5f, 0.5f, 1f)
         fullColor.setScale(1f, 1f, 1f, 1f)
+        if (Name.character == 2) {
+            binding.imgMan.setImageResource(R.drawable.conversation_woman)
+        }
 
         updateConversation()
 
@@ -49,7 +51,7 @@ class ConversationDialog(context: Context, chapter: Int) : Dialog(context) {
             if (Chapter.value == 6 && idx == conversationList.size) {
                 binding.imgMan.colorFilter = ColorMatrixColorFilter(halfColor)
                 binding.imgDuck.colorFilter = ColorMatrixColorFilter(halfColor)
-                binding.imgLast.visibility = View.INVISIBLE
+                binding.imgLast.visibility = View.VISIBLE
                 idx++
             } else if (Chapter.value == 6 && idx > conversationList.size) {
                 val intent = Intent(context, OutroActivity::class.java)

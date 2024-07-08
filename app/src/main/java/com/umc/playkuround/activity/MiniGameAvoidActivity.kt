@@ -1,8 +1,6 @@
 package com.umc.playkuround.activity
 
-import android.app.Activity
 import android.content.Context
-import android.content.Intent
 import android.hardware.Sensor
 import android.hardware.SensorEvent
 import android.hardware.SensorEventListener
@@ -11,22 +9,13 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import com.umc.playkuround.R
+import com.umc.playkuround.custom_view.AvoidView
+import com.umc.playkuround.custom_view.MiniGameTimerFragment
 import com.umc.playkuround.databinding.ActivityMinigameAvoidBinding
 import com.umc.playkuround.dialog.CountdownDialog
 import com.umc.playkuround.dialog.GameOverDialog
 import com.umc.playkuround.dialog.PauseDialog
-import com.umc.playkuround.custom_view.MiniGameTimerFragment
-import com.umc.playkuround.custom_view.AvoidView
-import com.umc.playkuround.data.User
 import com.umc.playkuround.dialog.WaitingDialog
-import com.umc.playkuround.network.AdventureData
-import com.umc.playkuround.network.GetBadgeResponse
-import com.umc.playkuround.network.HighestScoresResponse
-import com.umc.playkuround.network.LandmarkAPI
-import com.umc.playkuround.network.UserAPI
-import com.umc.playkuround.util.PlayKuApplication.Companion.pref
-import com.umc.playkuround.util.PlayKuApplication.Companion.user
-import com.umc.playkuround.util.PlayKuApplication.Companion.userTotalScore
 import com.umc.playkuround.util.SoundPlayer
 
 private const val TIME_LIMIT = 180
@@ -36,7 +25,7 @@ class MiniGameAvoidActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMinigameAvoidBinding
     private lateinit var timerFragment: MiniGameTimerFragment
     private var score = 0
-    private var life = 1
+    private var life = 3
 
     private lateinit var sensorManager: SensorManager
     private var accelerometerSensor: Sensor? = null
@@ -55,19 +44,10 @@ class MiniGameAvoidActivity : AppCompatActivity() {
         }
     }
 
-    private var highestScore = 0
-    private var badges = ArrayList<String>()
-
-    private fun getHighestScore() {
-        highestScore = pref.getInt("avoid_high", 0)
-    }
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMinigameAvoidBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
-        getHighestScore()
 
         sensorManager = getSystemService(Context.SENSOR_SERVICE) as SensorManager
         accelerometerSensor = sensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER)
@@ -120,29 +100,6 @@ class MiniGameAvoidActivity : AppCompatActivity() {
             }
         })
 
-        binding.avoidPauseBtn.setOnClickListener {
-            timerFragment.pause()
-            sensorManager.unregisterListener(accelerometerEventListener)
-            val pauseDialog = PauseDialog(this)
-            pauseDialog.setOnSelectListener(object : PauseDialog.OnSelectListener {
-                override fun resume() {
-                    accelerometerSensor?.let {
-                        sensorManager.registerListener(
-                            accelerometerEventListener,
-                            it,
-                            SensorManager.SENSOR_DELAY_GAME
-                        )
-                    }
-                    timerFragment.start()
-                }
-
-                override fun home() {
-                    finish()
-                }
-            })
-            pauseDialog.show()
-        }
-
         val countdownDialog = CountdownDialog(this)
         countdownDialog.setOnFinishListener(object : CountdownDialog.OnFinishListener {
             override fun onFinish() {
@@ -183,25 +140,17 @@ class MiniGameAvoidActivity : AppCompatActivity() {
     }
 
     private fun showGameOverDialog() {
-        SoundPlayer(applicationContext, R.raw.avoid_game_over).play()
-
-        if (highestScore < score) {
-            pref.setInt("avoid_high", score)
-        }
-
-        fun showGameOverDialog(result: Int) {
+        fun showGameOverDialog() {
             val gameOverDialog = GameOverDialog(this@MiniGameAvoidActivity)
             gameOverDialog.setOnDismissListener {
-                val resultIntent = Intent()
-                resultIntent.putExtra(
-                    "isNewLandmark",
-                    intent.getBooleanExtra("isNewLandmark", false)
-                )
-                resultIntent.putExtra("badge", badges)
-                setResult(result, resultIntent)
                 finish()
             }
-            gameOverDialog.setInfo(score.toString()+"점", true)
+
+            var isClear = false
+            if (score >= 150) isClear = true
+
+            //gameOverDialog.setInfo(score.toString() + "점", isClear) // TODO
+            gameOverDialog.setInfo(score.toString() + "점", true)
             gameOverDialog.show()
         }
 
@@ -209,7 +158,7 @@ class MiniGameAvoidActivity : AppCompatActivity() {
         waitingDialog.setOnFinishListener(object : WaitingDialog.OnFinishListener {
             override fun onFinish() {
                 waitingDialog.dismiss()
-                showGameOverDialog(Activity.RESULT_OK)
+                showGameOverDialog()
             }
         })
         waitingDialog.show()

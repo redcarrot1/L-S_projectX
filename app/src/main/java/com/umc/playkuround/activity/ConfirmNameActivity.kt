@@ -8,22 +8,22 @@ import com.umc.playkuround.databinding.ActivityConfirmNameBinding
 
 class ConfirmNameActivity : AppCompatActivity() {
 
-    private lateinit var binding : ActivityConfirmNameBinding
+    private lateinit var binding: ActivityConfirmNameBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityConfirmNameBinding.inflate(layoutInflater)
 
-        binding.textView.setText("당신의 이름이 "+Name.name+"이(가) 맞습니까?")
+        binding.tvConfirmName.text = "당신의 이름이\n'" + Name.name + "'이(가) 맞나요?"
         setContentView(binding.root)
 
-        binding.btYes.setOnClickListener {
-            val intent = Intent(this, IntroActivity::class.java)
+        binding.btnYes.setOnClickListener {
+            val intent = Intent(this, ChooseCharacterActivity::class.java)
             startActivity(intent)
             finish()
         }
 
-        binding.btNo.setOnClickListener {
+        binding.btnNo.setOnClickListener {
             val intent = Intent(this, InputNameActivity::class.java)
             startActivity(intent)
             finish()

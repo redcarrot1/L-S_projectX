@@ -4,9 +4,9 @@
     package="com.umc.playkuround"
     android:installLocation="preferExternal">
 
-    <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
-    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <!--    <uses-permission android:name="android.permission.INTERNET" />-->
+    <!--    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />-->
+    <!--    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />-->
 
     <!-- usesCleartextTraffic allow http communication -->
     <application
@@ -22,22 +22,21 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
 
-        <meta-data
-            android:name="com.google.android.geo.API_KEY"
-            android:value="AIzaSyAOb8MvvBNoDEsNIU1G_Jt1-7FgDVcp1Ik" />
-
         <activity
-            android:name=".activity.TestGameActivity"
+            android:name=".activity.LoginActivity"
             android:exported="true"
             android:resizeableActivity="false"
             android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
 
+        <activity
+            android:name=".activity.TestGameActivity"
+            android:resizeableActivity="false"
+            android:screenOrientation="portrait" />
 
         <activity
             android:name=".activity.Map2Activity"
@@ -46,6 +45,11 @@
 
         <activity
             android:name=".activity.OutroActivity"
+            android:resizeableActivity="false"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".activity.ChooseCharacterActivity"
             android:resizeableActivity="false"
             android:screenOrientation="portrait" />
 

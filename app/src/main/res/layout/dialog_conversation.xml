@@ -41,7 +41,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="228dp"
-        android:src="@drawable/conversation_man"
+        android:src="@drawable/last"
         android:visibility="invisible"
         app:layout_constraintBottom_toTopOf="@+id/img_background"
         app:layout_constraintEnd_toEndOf="parent"
@@ -83,15 +83,15 @@
 
     <TextView
         android:id="@+id/tv_content"
-        android:layout_width="445dp"
+        android:layout_width="418dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="12dp"
         android:fontFamily="@font/pretendard_regular"
         android:text="대화 내용"
         android:textAlignment="textStart"
-        android:textSize="15dp"
+        android:textSize="18dp"
         app:layout_constraintEnd_toEndOf="@+id/img_background"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="0.333"
         app:layout_constraintStart_toStartOf="@+id/img_name"
         app:layout_constraintTop_toBottomOf="@+id/img_name" />
 
