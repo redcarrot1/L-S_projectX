@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.umc.playkuround"
+    android:installLocation="preferExternal">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+
+    <!-- usesCleartextTraffic allow http communication -->
+    <application
+        android:name=".util.PlayKuApplication"
+        android:allowBackup="true"
+        android:dataExtractionRules="@xml/data_extraction_rules"
+        android:fullBackupContent="@xml/backup_rules"
+        android:icon="@drawable/icon"
+        android:label="@string/app_name"
+        android:roundIcon="@drawable/icon"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.Playkuround"
+        android:usesCleartextTraffic="true"
+        tools:targetApi="31">
+
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="AIzaSyAOb8MvvBNoDEsNIU1G_Jt1-7FgDVcp1Ik" />
+
+        <activity
+            android:name=".activity.TestGameActivity"
+            android:exported="true"
+            android:resizeableActivity="false"
+            android:screenOrientation="portrait">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+
+        <activity
+            android:name=".activity.Map2Activity"
+            android:resizeableActivity="false"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".activity.OutroActivity"
+            android:resizeableActivity="false"
+            android:screenOrientation="portrait" />
+
+        <!--        <activity android:name=".activity.MiniGameWindowActivity"-->
+        <!--            android:resizeableActivity="false"-->
+        <!--            android:screenOrientation="portrait"/>-->
+
+        <activity
+            android:name=".activity.MiniGameWindowActivity"
+            android:resizeableActivity="false"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".activity.MiniGameBreakOutActivity"
+            android:resizeableActivity="false"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".activity.MiniGameTicTacToeActivity"
+            android:resizeableActivity="false"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".activity.InputNameActivity"
+            android:resizeableActivity="false"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".activity.ConfirmNameActivity"
+            android:resizeableActivity="false"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".activity.IntroActivity"
+            android:resizeableActivity="false"
+            android:screenOrientation="portrait" />
+
+
+        <activity
+            android:name=".activity.EmailCertifyActivity"
+            android:resizeableActivity="false"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.PolicyAgreeActivity"
+            android:resizeableActivity="false"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.NicknameActivity"
+            android:resizeableActivity="false"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.AttendanceActivity"
+            android:resizeableActivity="false"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.MyPageActivity"
+            android:resizeableActivity="false"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.MapActivity"
+            android:resizeableActivity="false"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.MiniGameMoonActivity"
+            android:resizeableActivity="false"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.MiniGameQuizActivity"
+            android:resizeableActivity="false"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.MiniGameTimerActivity"
+            android:resizeableActivity="false"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.MajorChoiceActivity"
+            android:resizeableActivity="false"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.DetailAgree01Activity"
+            android:resizeableActivity="false"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.DetailAgree02Activity"
+            android:resizeableActivity="false"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.DetailAgree03Activity"
+            android:resizeableActivity="false"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.RankingActivity"
+            android:resizeableActivity="false"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.BadgeActivity"
+            android:resizeableActivity="false"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.LandmarkRankingActivity"
+            android:resizeableActivity="false"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.MiniGameTypingActivity"
+            android:resizeableActivity="false"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustResize" />
+        <activity
+            android:name=".activity.MiniGameCardFlippingActivity"
+            android:resizeableActivity="false"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.MiniGameCatchActivity"
+            android:resizeableActivity="false"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.MiniGameBridgeActivity"
+            android:resizeableActivity="false"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.MiniGameAvoidActivity"
+            android:resizeableActivity="false"
+            android:screenOrientation="portrait" />
+
+    </application>
+
+</manifest>

@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <ImageView
+        android:id="@+id/dialog_game_over_bg"
+        android:layout_width="336dp"
+        android:layout_height="444dp"
+        android:src="@drawable/game_rule_bg"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"/>
+
+    <TextView
+        android:id="@+id/tv_chapter"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="36dp"
+        android:fontFamily="@font/neo_dunggeunmo_regular"
+        android:text="CH. 1"
+        android:textColor="#6A935E"
+        android:textSize="23dp"
+        app:layout_constraintEnd_toEndOf="@id/dialog_game_over_bg"
+        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintStart_toStartOf="@id/dialog_game_over_bg"
+        app:layout_constraintTop_toTopOf="@id/dialog_game_over_bg" />
+
+
+    <TextView
+        android:id="@+id/tv_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:fontFamily="@font/neo_dunggeunmo_regular"
+        android:text="일감호에서 살아남기"
+        android:textColor="#6A935E"
+        android:textSize="23dp"
+        app:layout_constraintEnd_toEndOf="@id/dialog_game_over_bg"
+        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintStart_toStartOf="@id/dialog_game_over_bg"
+        app:layout_constraintTop_toBottomOf="@+id/tv_chapter" />
+
+
+    <TextView
+        android:id="@+id/tv_game_rule_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:fontFamily="@font/neo_dunggeunmo_regular"
+        android:text="Game Rule"
+        android:textSize="25dp"
+        app:layout_constraintEnd_toEndOf="@+id/dialog_game_over_bg"
+        app:layout_constraintStart_toStartOf="@+id/dialog_game_over_bg"
+        app:layout_constraintTop_toBottomOf="@+id/tv_title"
+        app:layout_constraintVertical_chainStyle="packed" />
+
+    <TextView
+        android:id="@+id/tv_game_rule"
+        android:layout_width="224dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:fontFamily="@font/neo_dunggeunmo_regular"
+        android:text="게임룰"
+        android:textSize="18dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_game_rule_title" />
+
+    <TextView
+        android:id="@+id/tv_clear_condition_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="56dp"
+        android:fontFamily="@font/neo_dunggeunmo_regular"
+        android:text="클리어 조건"
+        android:textSize="23dp"
+        app:layout_constraintEnd_toEndOf="@+id/dialog_game_over_bg"
+        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintStart_toStartOf="@+id/dialog_game_over_bg"
+        app:layout_constraintTop_toBottomOf="@+id/tv_game_rule"
+        app:layout_constraintVertical_chainStyle="packed" />
+
+    <TextView
+        android:id="@+id/tv_clear_condition"
+        android:layout_width="224dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:fontFamily="@font/neo_dunggeunmo_regular"
+        android:text="클리어 조건"
+        android:textSize="18dp"
+        app:layout_constraintBottom_toTopOf="@+id/dialog_game_start"
+        app:layout_constraintEnd_toEndOf="@+id/dialog_game_over_bg"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="@+id/dialog_game_over_bg"
+        app:layout_constraintTop_toBottomOf="@+id/tv_clear_condition_title"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <Button
+        android:id="@+id/dialog_game_start"
+        android:layout_width="160dp"
+        android:layout_height="48dp"
+        android:layout_marginBottom="40dp"
+        android:background="@drawable/button_blue_small"
+        android:fontFamily="@font/neo_dunggeunmo_regular"
+        android:text="게임시작"
+        android:textSize="19dp"
+        app:layout_constraintBottom_toBottomOf="@id/dialog_game_over_bg"
+        app:layout_constraintEnd_toEndOf="@id/dialog_game_over_bg"
+        app:layout_constraintStart_toStartOf="@id/dialog_game_over_bg" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
