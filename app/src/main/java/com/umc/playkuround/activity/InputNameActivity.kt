@@ -5,11 +5,10 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.umc.playkuround.data.Name
 import com.umc.playkuround.databinding.ActivityInputNameBinding
-import com.umc.playkuround.databinding.ActivityTestGameBinding
 
 class InputNameActivity : AppCompatActivity() {
 
-    private lateinit var binding : ActivityInputNameBinding
+    private lateinit var binding: ActivityInputNameBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -22,46 +21,6 @@ class InputNameActivity : AppCompatActivity() {
             startActivity(intent)
             finish()
         }
-//
-//        binding.testAvoidBtn.setOnClickListener {
-//            val intent = Intent(this, MiniGameAvoidActivity::class.java)
-//            startActivity(intent)
-//        }
-//
-//        binding.testBridgeBtn.setOnClickListener {
-//            val intent = Intent(this, MiniGameBridgeActivity::class.java)
-//            startActivity(intent)
-//        }
-//
-//        binding.testCardBtn.setOnClickListener {
-//            val intent = Intent(this, MiniGameCardFlippingActivity::class.java)
-//            startActivity(intent)
-//        }
-//
-//        binding.testCatchBtn.setOnClickListener {
-//            val intent = Intent(this, MiniGameCatchActivity::class.java)
-//            startActivity(intent)
-//        }
-//
-//        binding.testMoonBtn.setOnClickListener {
-//            val intent = Intent(this, MiniGameMoonActivity::class.java)
-//            startActivity(intent)
-//        }
-//
-//        binding.testTimerBtn.setOnClickListener {
-//            val intent = Intent(this, MiniGameTimerActivity::class.java)
-//            startActivity(intent)
-//        }
-//
-//        binding.testTypingBtn.setOnClickListener {
-//            val intent = Intent(this, MiniGameTypingActivity::class.java)
-//            startActivity(intent)
-//        }
-//
-//        binding.testQuizBtn.setOnClickListener {
-//            val intent = Intent(this, MiniGameQuizActivity::class.java)
-//            startActivity(intent)
-//        }
     }
 
 }

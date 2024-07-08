@@ -14,7 +14,6 @@ import com.umc.playkuround.custom_view.MiniGameTimerFragment
 import com.umc.playkuround.databinding.ActivityMinigameAvoidBinding
 import com.umc.playkuround.dialog.CountdownDialog
 import com.umc.playkuround.dialog.GameOverDialog
-import com.umc.playkuround.dialog.PauseDialog
 import com.umc.playkuround.dialog.WaitingDialog
 import com.umc.playkuround.util.SoundPlayer
 
@@ -119,24 +118,6 @@ class MiniGameAvoidActivity : AppCompatActivity() {
     override fun onBackPressed() {
         timerFragment.pause()
         sensorManager.unregisterListener(accelerometerEventListener)
-        val pauseDialog = PauseDialog(this)
-        pauseDialog.setOnSelectListener(object : PauseDialog.OnSelectListener {
-            override fun resume() {
-                accelerometerSensor?.let {
-                    sensorManager.registerListener(
-                        accelerometerEventListener,
-                        it,
-                        SensorManager.SENSOR_DELAY_GAME
-                    )
-                }
-                timerFragment.start()
-            }
-
-            override fun home() {
-                finish()
-            }
-        })
-        pauseDialog.show()
     }
 
     private fun showGameOverDialog() {

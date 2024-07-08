@@ -32,7 +32,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:fontFamily="@font/neo_dunggeunmo_regular"
-        android:text="@string/typing_game"
+        android:text="수강신청 All 클릭"
         android:textColor="@color/text_color"
         android:textSize="24dp"
         app:layout_constraintEnd_toEndOf="parent"

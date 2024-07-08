@@ -65,7 +65,7 @@ object ConversationManager {
             6 -> listOf(
                 Conversation(false, "고마워 내가 건대 학생이 될 수 있었던 건 다 너 덕분이야"),
                 Conversation(false, "내 행운을 너에게 줄게. 이젠 너 차례야!"),
-                Conversation(true, "(합격 부적 사진) 건대 합격 부적을 얻었다!")
+                Conversation(true, "건대 합격 부적을 얻었다!")
             )
 
             else -> {

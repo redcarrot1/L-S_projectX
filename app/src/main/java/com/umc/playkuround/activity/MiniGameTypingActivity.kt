@@ -10,7 +10,6 @@ import com.umc.playkuround.custom_view.TextRainView
 import com.umc.playkuround.databinding.ActivityMinigameTypingBinding
 import com.umc.playkuround.dialog.CountdownDialog
 import com.umc.playkuround.dialog.GameOverDialog
-import com.umc.playkuround.dialog.PauseDialog
 import com.umc.playkuround.dialog.WaitingDialog
 import com.umc.playkuround.util.SoundPlayer
 
@@ -26,6 +25,11 @@ class MiniGameTypingActivity : AppCompatActivity() {
         binding = ActivityMinigameTypingBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        binding.root.setOnClickListener {
+            binding.typingTextRainView.pause()
+            showGameOverDialog()
+        }
+
         binding.typingTextBox.requestFocus()
         val inputMethodManager =
             getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
@@ -34,7 +38,6 @@ class MiniGameTypingActivity : AppCompatActivity() {
         binding.typingTextRainView.setOnTextRainDropListener(object :
             TextRainView.OnTextRainDropListener {
             override fun drop() {
-                //SoundPlayer(applicationContext, R.raw.typing_fall).play()
                 life--
                 when (life) {
                     2 -> binding.typingLife1Iv.setImageResource(R.drawable.typing_empty_heart)
@@ -77,21 +80,6 @@ class MiniGameTypingActivity : AppCompatActivity() {
             }
         })
         countdownDialog.show()
-    }
-
-    override fun onBackPressed() {
-        binding.typingTextRainView.pause()
-        val pauseDialog = PauseDialog(this)
-        pauseDialog.setOnSelectListener(object : PauseDialog.OnSelectListener {
-            override fun resume() {
-                binding.typingTextRainView.start()
-            }
-
-            override fun home() {
-                finish()
-            }
-        })
-        pauseDialog.show()
     }
 
     private fun showGameOverDialog() {
