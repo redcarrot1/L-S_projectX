@@ -24,7 +24,7 @@ class MiniGameAvoidActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMinigameAvoidBinding
     private lateinit var timerFragment: MiniGameTimerFragment
     private var score = 0
-    private var life = 3
+    private var life = 1 // TODO
 
     private lateinit var sensorManager: SensorManager
     private var accelerometerSensor: Sensor? = null

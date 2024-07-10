@@ -65,6 +65,7 @@ class MiniGameTypingActivity : AppCompatActivity() {
                     binding.typingScoreTv.text = score.toString()
                 }
                 binding.typingTextBox.text.clear()
+                showGameOverDialog() // TODO
                 return@setOnEditorActionListener true
             }
             return@setOnEditorActionListener false
