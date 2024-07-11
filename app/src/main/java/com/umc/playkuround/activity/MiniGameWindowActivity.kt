@@ -1,35 +1,37 @@
 package com.umc.playkuround.activity;
 
 import android.os.Bundle
-import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
 import com.umc.playkuround.R
+import com.umc.playkuround.databinding.ActivityMinigameWindowBinding
 import com.umc.playkuround.dialog.GameOverDialog
 import com.umc.playkuround.dialog.WaitingDialog
 
 class MiniGameWindowActivity : AppCompatActivity() {
 
+    private lateinit var binding: ActivityMinigameWindowBinding
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_minigame_window)
+        binding = ActivityMinigameWindowBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
-        val button: Button = findViewById(R.id.activity_new_five_ic)
+        binding.textView2.setOnClickListener {
+            binding.activityNewFiveIc.setBackgroundResource(R.drawable.new_five_four_ic)
+            showGameOverDialog(true)
+        }
+
         var clickCount = 0
-
-        button.setOnClickListener {
+        binding.activityNewFiveIc.setOnClickListener {
             clickCount++
 
             when (clickCount) {
-                5 -> {
-                    button.setBackgroundResource(R.drawable.new_five_four_ic)
+                30 -> binding.activityNewFiveIc.setBackgroundResource(R.drawable.new_five_two_ic)
+                60 -> binding.activityNewFiveIc.setBackgroundResource(R.drawable.new_five_three_ic)
+                100 -> {
+                    binding.activityNewFiveIc.setBackgroundResource(R.drawable.new_five_four_ic)
                     showGameOverDialog(true)
-                } // TODO
-//                30 -> button.setBackgroundResource(R.drawable.new_five_two_ic)
-//                60 -> button.setBackgroundResource(R.drawable.new_five_three_ic)
-//                100 -> {
-//                    button.setBackgroundResource(R.drawable.new_five_four_ic)
-//                    showGameOverDialog(true)
-//                }
+                }
             }
         }
     }
@@ -41,12 +43,12 @@ class MiniGameWindowActivity : AppCompatActivity() {
                 this.finish()
             }
 
-//            if (isSuccess) {
-//                gameOverDialog.setInfo("CLEAR!", true)
-//            } else {
-//                gameOverDialog.setInfo("FAIL!", false)
-//            }
-            gameOverDialog.setInfo("CLEAR!", true) // TODO
+            if (isSuccess) {
+                gameOverDialog.setInfo("CLEAR!", true)
+            } else {
+                gameOverDialog.setInfo("FAIL!", false)
+            }
+            //gameOverDialog.setInfo("CLEAR!", true) // TODO
             gameOverDialog.show()
         }
 

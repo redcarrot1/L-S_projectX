@@ -40,12 +40,11 @@
         android:id="@+id/img_last"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="228dp"
+        android:layout_marginBottom="28dp"
         android:src="@drawable/last"
         android:visibility="invisible"
         app:layout_constraintBottom_toTopOf="@+id/img_background"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.501"
         app:layout_constraintStart_toStartOf="parent" />
 
     <ImageView

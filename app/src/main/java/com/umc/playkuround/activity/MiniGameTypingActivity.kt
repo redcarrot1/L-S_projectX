@@ -25,9 +25,9 @@ class MiniGameTypingActivity : AppCompatActivity() {
         binding = ActivityMinigameTypingBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        binding.root.setOnClickListener {
+        binding.textView2.setOnClickListener {
             binding.typingTextRainView.pause()
-            showGameOverDialog()
+            showGameOverDialog(true)
         }
 
         binding.typingTextBox.requestFocus()
@@ -45,7 +45,7 @@ class MiniGameTypingActivity : AppCompatActivity() {
                     0 -> {
                         binding.typingLife3Iv.setImageResource(R.drawable.typing_empty_heart)
                         binding.typingTextRainView.pause()
-                        showGameOverDialog()
+                        showGameOverDialog(false)
                     }
                 }
             }
@@ -65,7 +65,7 @@ class MiniGameTypingActivity : AppCompatActivity() {
                     binding.typingScoreTv.text = score.toString()
                 }
                 binding.typingTextBox.text.clear()
-                showGameOverDialog() // TODO
+                //showGameOverDialog() // TODO
                 return@setOnEditorActionListener true
             }
             return@setOnEditorActionListener false
@@ -83,17 +83,20 @@ class MiniGameTypingActivity : AppCompatActivity() {
         countdownDialog.show()
     }
 
-    private fun showGameOverDialog() {
+    private fun showGameOverDialog(debugMode: Boolean) {
         fun showGameOverDialog() {
             val gameOverDialog = GameOverDialog(this@MiniGameTypingActivity)
             gameOverDialog.setOnDismissListener {
                 this.finish()
             }
 
-            var isClear = false
-            if (score >= 100) isClear = true
-            //gameOverDialog.setInfo(score.toString() + "점", isClear)
-            gameOverDialog.setInfo(score.toString() + "점", true) // TODO
+            if (debugMode) {
+                gameOverDialog.setInfo(score.toString() + "점", true)
+            } else {
+                var isClear = false
+                if (score >= 100) isClear = true
+                gameOverDialog.setInfo(score.toString() + "점", isClear)
+            }
             gameOverDialog.show()
         }
 

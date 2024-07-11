@@ -24,7 +24,7 @@ class MiniGameAvoidActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMinigameAvoidBinding
     private lateinit var timerFragment: MiniGameTimerFragment
     private var score = 0
-    private var life = 1 // TODO
+    private var life = 3
 
     private lateinit var sensorManager: SensorManager
     private var accelerometerSensor: Sensor? = null
@@ -59,7 +59,7 @@ class MiniGameAvoidActivity : AppCompatActivity() {
             MiniGameTimerFragment.OnTimeProgressListener {
             override fun timeUp() {
                 sensorManager.unregisterListener(accelerometerEventListener)
-                showGameOverDialog()
+                showGameOverDialog(false)
             }
 
             override fun timeProgress(leftTime: Int) {
@@ -82,6 +82,10 @@ class MiniGameAvoidActivity : AppCompatActivity() {
             }
         })
 
+        binding.textView.setOnClickListener {
+            showGameOverDialog(true)
+        }
+
         binding.avoidGameView.setOnHitListener(object : AvoidView.OnHitListener {
             override fun hit() {
                 SoundPlayer(applicationContext, R.raw.avoid_hit).play()
@@ -93,7 +97,7 @@ class MiniGameAvoidActivity : AppCompatActivity() {
                         binding.avoidLife3Iv.setImageResource(R.drawable.typing_empty_heart)
                         sensorManager.unregisterListener(accelerometerEventListener)
                         timerFragment.pause()
-                        showGameOverDialog()
+                        showGameOverDialog(false)
                     }
                 }
             }
@@ -120,18 +124,20 @@ class MiniGameAvoidActivity : AppCompatActivity() {
         sensorManager.unregisterListener(accelerometerEventListener)
     }
 
-    private fun showGameOverDialog() {
+    private fun showGameOverDialog(debugMode: Boolean) {
         fun showGameOverDialog() {
             val gameOverDialog = GameOverDialog(this@MiniGameAvoidActivity)
             gameOverDialog.setOnDismissListener {
                 finish()
             }
 
-            var isClear = false
-            if (score >= 150) isClear = true
-
-            //gameOverDialog.setInfo(score.toString() + "점", isClear) // TODO
-            gameOverDialog.setInfo(score.toString() + "점", true)
+            if (debugMode) {
+                gameOverDialog.setInfo(score.toString() + "점", true)
+            } else {
+                var isClear = false
+                if (score >= 150) isClear = true
+                gameOverDialog.setInfo(score.toString() + "점", isClear) // TODO
+            }
             gameOverDialog.show()
         }
 

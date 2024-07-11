@@ -5,15 +5,19 @@ import android.view.View
 import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
 import com.umc.playkuround.R
+import com.umc.playkuround.databinding.ActivityMinigameTicTacToeBinding
 import com.umc.playkuround.dialog.GameOverDialog
 import com.umc.playkuround.dialog.WaitingDialog
 import kotlin.random.Random
 
 class MiniGameTicTacToeActivity : AppCompatActivity() {
 
+    private lateinit var binding: ActivityMinigameTicTacToeBinding
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_minigame_tic_tac_toe)
+        binding = ActivityMinigameTicTacToeBinding.inflate(layoutInflater)
+        setContentView(binding.root)
     }
 
     fun buClick(view: View) {
@@ -30,15 +34,15 @@ class MiniGameTicTacToeActivity : AppCompatActivity() {
             R.id.bu8 -> cellID = 8
             R.id.bu9 -> cellID = 9
         }
-        PlayGame(cellID, buSelected)
+        playGame(cellID, buSelected)
     }
 
-    var player1 = ArrayList<Int>()
-    var player2 = ArrayList<Int>()
+    private var player1 = ArrayList<Int>()
+    private var player2 = ArrayList<Int>()
 
-    var activePlayer = 1
+    private var activePlayer = 1
 
-    private fun PlayGame(cellID: Int, buSelected: Button) {
+    private fun playGame(cellID: Int, buSelected: Button) {
         if (activePlayer == 1) {
             buSelected.setBackgroundResource(R.drawable.yesyesyes)
             buSelected.backgroundTintList = null
@@ -59,11 +63,12 @@ class MiniGameTicTacToeActivity : AppCompatActivity() {
                 showGameOverDialog(false)
             }
         } else {
-            if (activePlayer == 2) {
+            if (player1.size + player2.size == 9) {
+                showGameOverDialog(false)
+            } else if (activePlayer == 2) {
                 AutoPlay()
             }
         }
-
 
         buSelected.isEnabled = false
     }
@@ -146,22 +151,20 @@ class MiniGameTicTacToeActivity : AppCompatActivity() {
         val r = Random.Default
         val randIndex = r.nextInt(emptyCells.size)
         val cellID = emptyCells[randIndex]
-
-        var buSelected: Button
-        when (cellID) {
-            1 -> buSelected = findViewById(R.id.bu1)
-            2 -> buSelected = findViewById(R.id.bu2)
-            3 -> buSelected = findViewById(R.id.bu3)
-            4 -> buSelected = findViewById(R.id.bu4)
-            5 -> buSelected = findViewById(R.id.bu5)
-            6 -> buSelected = findViewById(R.id.bu6)
-            7 -> buSelected = findViewById(R.id.bu7)
-            8 -> buSelected = findViewById(R.id.bu8)
-            9 -> buSelected = findViewById(R.id.bu9)
-            else -> buSelected = findViewById(R.id.bu1)
+        val buSelected = when (cellID) {
+            1 -> binding.bu1
+            2 -> binding.bu2
+            3 -> binding.bu3
+            4 -> binding.bu4
+            5 -> binding.bu5
+            6 -> binding.bu6
+            7 -> binding.bu7
+            8 -> binding.bu8
+            9 -> binding.bu9
+            else -> binding.bu1
         }
 
-        PlayGame(cellID, buSelected)
+        playGame(cellID, buSelected)
     }
 
     private fun showGameOverDialog(isSuccess: Boolean) {
@@ -171,12 +174,12 @@ class MiniGameTicTacToeActivity : AppCompatActivity() {
                 this.finish()
             }
 
-//            if (isSuccess) {
-//                gameOverDialog.setInfo("CLEAR!", true)
-//            } else {
-//                gameOverDialog.setInfo("FAIL!", false)
-//            }
-            gameOverDialog.setInfo("CLEAR!", true) // TODO
+            if (isSuccess) {
+                gameOverDialog.setInfo("CLEAR!", true)
+            } else {
+                gameOverDialog.setInfo("FAIL!", false)
+            }
+            //gameOverDialog.setInfo("CLEAR!", true) // TODO
             gameOverDialog.show()
         }
 

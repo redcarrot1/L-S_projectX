@@ -8,6 +8,7 @@
     android:background="@drawable/background">
 
     <TextView
+        android:id="@+id/break_out_title_tv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textColor="#504A38"
