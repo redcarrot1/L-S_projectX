@@ -2,6 +2,7 @@ package com.umc.playkuround.activity
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import com.umc.playkuround.custom_view.BreakOutView
 import com.umc.playkuround.databinding.ActivityMinigameBreakOutBinding
 import com.umc.playkuround.dialog.GameOverDialog
 import com.umc.playkuround.dialog.WaitingDialog
@@ -15,14 +16,14 @@ class MiniGameBreakOutActivity : AppCompatActivity() {
         binding = ActivityMinigameBreakOutBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-//        binding.breakOutTitleTv.setOnClickListener {
-//            binding.breakOutView.pause()
-//            showGameOverDialog(true)
-//        }
+        binding.breakOutTitleTv.setOnClickListener {
+            binding.breakOutView.pause()
+            showGameOverDialog(true)
+        }
 
         binding.breakOutView.setOnFinishListener(object : BreakOutView.OnFinishListener {
             override fun onFinish(isFail: Boolean) {
-                showGameOverDialog(true)
+                showGameOverDialog(!isFail)
             }
         })
         binding.breakOutView.start()

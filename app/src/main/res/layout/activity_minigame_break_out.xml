@@ -20,12 +20,12 @@
         app:layout_constraintTop_toTopOf="parent"
         android:layout_marginTop="30dp"/>
 
-    <com.umc.playkuround.activity.BreakOutView
+    <com.umc.playkuround.custom_view.BreakOutView
         android:id="@+id/break_out_view"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginTop="100dp"/>
+        android:layout_marginTop="100dp"
+        android:layout_height="0dp"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
